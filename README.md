@@ -18,7 +18,7 @@ dataset = foz.load_zoo_dataset(
 )
 
 # Register model
-foz.register_zoo_model_source("https://github.com/saurabheights/rf-detr-fifty-one-plugin")
+foz.register_zoo_model_source("https://github.com/fch-aa/rf-detr-fifty-one-plugin")
 
 # Load the medium-size RF-Detr model and save inference results in rf-detr-m field.
 model = foz.load_zoo_model("saurabheights/rf-detr-medium")

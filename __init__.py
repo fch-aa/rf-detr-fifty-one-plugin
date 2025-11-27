@@ -18,15 +18,20 @@ class RfDetrModel(Model):
         super().__init__()
 
         def get_model(model_name):
-            model_class = {
-                "saurabheights/rf-detr-nano": RFDETRNano,
-                "saurabheights/rf-detr-small": RFDETRSmall,
-                "saurabheights/rf-detr-medium": RFDETRMedium,
-                "saurabheights/rf-detr-large": RFDETRLarge,
-            }
+            # model_class = {
+            #     "saurabheights/rf-detr-nano": RFDETRNano,
+            #     "saurabheights/rf-detr-small": RFDETRSmall,
+            #     "saurabheights/rf-detr-medium": RFDETRMedium,
+            #     "saurabheights/rf-detr-large": RFDETRLarge,
+            # }
 
             # TODO - Download to model_path
-            rfdetr_model = model_class[model_name]()
+            # rfdetr_model = model_class[model_name]()
+
+            rfdetr_model = RFDETRLarge(
+                pretrain_weights="Output_Model/checkpoint_best_total.pth"
+            )
+
             logging.info(f"Optimizing model: {model_name} for inference.")
             rfdetr_model.optimize_for_inference(compile=False)
             logging.info(f"Model: {model_name} optimized for inference.")
