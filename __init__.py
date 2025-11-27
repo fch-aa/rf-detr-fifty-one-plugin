@@ -28,7 +28,7 @@ class RfDetrModel(Model):
             # TODO - Download to model_path
             rfdetr_model = model_class[model_name]()
             logging.info(f"Optimizing model: {model_name} for inference.")
-            rfdetr_model.optimize_for_inference()
+            rfdetr_model.optimize_for_inference(compile=False)
             logging.info(f"Model: {model_name} optimized for inference.")
             return rfdetr_model
 
@@ -53,7 +53,7 @@ class RfDetrModel(Model):
                 fo.Detection(
                     label=self._model.class_names[class_id.item()],
                     bounding_box=normalized_box,
-                    confidence=confidence.item()
+                    confidence=confidence.item(),
                 )
             )
         return fo.Detections(detections=fo_detections)
